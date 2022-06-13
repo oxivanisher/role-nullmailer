@@ -1,0 +1,11 @@
+image: $CI_REGISTRY/thunderbluff/ansible-linter:latest
+
+stages:
+  - ansible-lint
+
+ansible-lint:
+  stage: ansible-lint
+  tags:
+    - docker
+  script:
+    - ansible-lint .
