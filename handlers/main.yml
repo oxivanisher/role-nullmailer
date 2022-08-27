@@ -4,3 +4,4 @@
   ansible.builtin.service:
     name: nullmailer
     state: restarted
+  ignore_errors: "{{ ansible_check_mode }}"
