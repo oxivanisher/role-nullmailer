@@ -8,4 +8,4 @@ ansible-lint:
   tags:
     - docker
   script:
-    - ansible-lint .
+    - ansible-lint --show-relpath .

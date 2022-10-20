@@ -1,55 +1,55 @@
 ---
 
-- name: ensure other mail agents are not installed
+- name: Ensure other mail agents are not installed
   ansible.builtin.package:
     name: ['msmtp', 'msmtp-mta', 'ssmtp']
     state: absent
 
-- name: ensure nullmailer is installed
+- name: Ensure nullmailer is installed
   ansible.builtin.package:
     name: ['nullmailer', 'mailutils']
 
-- name: deploy defaultdomain configuration
+- name: Deploy defaultdomain configuration
   ansible.builtin.template:
     src: defaultdomain.jinja2
     dest: /etc/nullmailer/defaultdomain
     owner: root
     group: root
     mode: '0644'
-  notify: restart nullmailer
+  notify: Restart nullmailer
 
-- name: deploy allmailfrom configuration
+- name: Deploy allmailfrom configuration
   ansible.builtin.template:
     src: allmailfrom.jinja2
     dest: /etc/nullmailer/allmailfrom
     owner: root
     group: root
     mode: '0644'
-  notify: restart nullmailer
+  notify: Restart nullmailer
 
-- name: deploy adminaddr configuration
+- name: Deploy adminaddr configuration
   ansible.builtin.template:
     src: adminaddr.jinja2
     dest: /etc/nullmailer/adminaddr
     owner: root
     group: root
     mode: '0644'
-  notify: restart nullmailer
+  notify: Restart nullmailer
 
-- name: deploy remotes configuration
+- name: Deploy remotes configuration
   ansible.builtin.template:
     src: remotes.jinja2
     dest: /etc/nullmailer/remotes
     owner: mail
     group: mail
     mode: '0640'
-  notify: restart nullmailer
+  notify: Restart nullmailer
 
-- name: configure mailname
+- name: Configure mailname
   ansible.builtin.template:
     src: mailname.jinja2
     dest: /etc/mailname
     owner: root
     group: root
     mode: '0644'
-  notify: restart nullmailer
+  notify: Restart nullmailer

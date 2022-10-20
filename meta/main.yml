@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: nullmailer
+  namespace: oxivanisher
   author: Marc Urben
   description: Configure nullmailer
   company: Thunderbluff
