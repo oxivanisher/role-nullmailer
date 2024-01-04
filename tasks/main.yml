@@ -1,13 +1,17 @@
 ---
-
 - name: Ensure other mail agents are not installed
   ansible.builtin.package:
-    name: ['msmtp', 'msmtp-mta', 'ssmtp']
+    name:
+      - msmtp
+      - msmtp-mta
+      - ssmtp
     state: absent
 
 - name: Ensure nullmailer is installed
   ansible.builtin.package:
-    name: ['nullmailer', 'mailutils']
+    name:
+      - nullmailer
+      - mailutils
 
 - name: Deploy defaultdomain configuration
   ansible.builtin.template:
@@ -15,7 +19,7 @@
     dest: /etc/nullmailer/defaultdomain
     owner: root
     group: root
-    mode: '0644'
+    mode: "0644"
   notify: Restart nullmailer
 
 - name: Deploy allmailfrom configuration
@@ -24,8 +28,16 @@
     dest: /etc/nullmailer/allmailfrom
     owner: root
     group: root
-    mode: '0644'
+    mode: "0644"
   notify: Restart nullmailer
+  when: nullmailer_allmail_from  | length > 0
+
+- name: Remove allmailfrom configuration
+  ansible.builtin.file:
+    src: /etc/nullmailer/allmailfrom
+    state: absent
+  notify: Restart nullmailer
+  when: nullmailer_allmail_from  | length == 0
 
 - name: Deploy adminaddr configuration
   ansible.builtin.template:
@@ -33,7 +45,7 @@
     dest: /etc/nullmailer/adminaddr
     owner: root
     group: root
-    mode: '0644'
+    mode: "0644"
   notify: Restart nullmailer
 
 - name: Deploy remotes configuration
@@ -42,7 +54,7 @@
     dest: /etc/nullmailer/remotes
     owner: mail
     group: mail
-    mode: '0640'
+    mode: "0640"
   notify: Restart nullmailer
 
 - name: Configure mailname
@@ -51,5 +63,5 @@
     dest: /etc/mailname
     owner: root
     group: root
-    mode: '0644'
+    mode: "0644"
   notify: Restart nullmailer

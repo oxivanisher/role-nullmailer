@@ -1,2 +1,9 @@
 ---
 # defaults file for nullmailer
+nullmailer_from_domain:
+nullmailer_allmail_from:
+nullmailer_admin_address:
+nullmailer_server_address:
+nullmailer_server_user:
+nullmailer_server_password:
+nullmailer_server_port: 465

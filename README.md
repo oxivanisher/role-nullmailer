@@ -1,31 +1,32 @@
-Role Name
-=========
+nullmailer
+==========
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role configures the simple relay-only email transport agent [nullmailer](https://github.com/bruceg/nullmailer) as a system default mail program.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+| Name          | Comment                              | Default value | File to be configured |
+|---------------|--------------------------------------|---------------|-----------------------|
+| nullmailer_from_domain  | The "from" domain. The mailname will be set to `ansible_hostname`.`nullmailer_from_domain`. |           | `/etc/nullmailer/defaultdomain` and `/etc/mailname` |
+| nullmailer_allmail_from  | Send all emails from this address. If set empty, this feature is disabled.   |           | `/etc/nullmailer/allmailfrom` |
+| nullmailer_admin_address | The email of the system administrator. |           | `/etc/nullmailer/adminaddr` |
+| nullmailer_server_address | The email server to be used to send emails. |           | `/etc/nullmailer/remotes` |
+| nullmailer_server_port | The email server port to be used to send emails. | `465`          | `/etc/nullmailer/remotes` |
+| nullmailer_server_user | The email user to be used to send emails.  |           | `/etc/nullmailer/remotes` |
+| nullmailer_server_password | The email user password to be used to send emails.  |           | `/etc/nullmailer/remotes` |
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- name: System email configuration
+  hosts: all,!email_server
+  collections:
+    - oxivanisher.linux_base
+  roles:
+    - role: oxivanisher.linux_base.nullmailer
+```
 
 License
 -------
@@ -35,4 +36,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This role is part of the [oxivanisher.linux_base](https://galaxy.ansible.com/ui/repo/published/oxivanisher/linux_base/) collection, and the source for that is located on [github](https://github.com/oxivanisher/collection-linux_base).
