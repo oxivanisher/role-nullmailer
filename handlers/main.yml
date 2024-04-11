@@ -4,3 +4,5 @@
     name: nullmailer
     state: restarted
   ignore_errors: "{{ ansible_check_mode }}"
+  become: true
+  become_user: root
