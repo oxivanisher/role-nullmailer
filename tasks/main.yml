@@ -42,7 +42,7 @@
 
 - name: Remove allmailfrom configuration
   ansible.builtin.file:
-    src: /etc/nullmailer/allmailfrom
+    path: /etc/nullmailer/allmailfrom
     state: absent
   notify: Restart nullmailer
   when: nullmailer_allmail_from | length == 0
