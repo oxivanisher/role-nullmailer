@@ -1,5 +1,6 @@
 nullmailer
 ==========
+[![Ansible Lint](https://github.com/oxivanisher/role-nullmailer/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/oxivanisher/role-nullmailer/actions/workflows/ansible-lint.yml)
 
 This role configures the simple relay-only email transport agent [nullmailer](https://github.com/bruceg/nullmailer) as a system default mail program.
 
