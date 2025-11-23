@@ -7,15 +7,15 @@ This role configures the simple relay-only email transport agent [nullmailer](ht
 Role Variables
 --------------
 
-| Name          | Comment                              | Default value | File to be configured |
-|---------------|--------------------------------------|---------------|-----------------------|
-| nullmailer_from_domain  | The "from" domain. The mailname will be set to `ansible_hostname`.`nullmailer_from_domain`. |           | `/etc/nullmailer/defaultdomain` and `/etc/mailname` |
-| nullmailer_allmail_from  | Send all emails from this address. If set empty, this feature is disabled.   |           | `/etc/nullmailer/allmailfrom` |
-| nullmailer_admin_address | The email of the system administrator. |           | `/etc/nullmailer/adminaddr` |
-| nullmailer_server_address | The email server to be used to send emails. |           | `/etc/nullmailer/remotes` |
-| nullmailer_server_port | The email server port to be used to send emails. | `465`          | `/etc/nullmailer/remotes` |
-| nullmailer_server_user | The email user to be used to send emails.  |           | `/etc/nullmailer/remotes` |
-| nullmailer_server_password | The email user password to be used to send emails.  |           | `/etc/nullmailer/remotes` |
+| Name                       | Comment                                                                                           | Default value | File to be configured                               |
+| -------------------------- | ------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------- |
+| nullmailer_from_domain     | The "from" domain. The mailname will be set to `ansible_facts.hostname`.`nullmailer_from_domain`. |               | `/etc/nullmailer/defaultdomain` and `/etc/mailname` |
+| nullmailer_allmail_from    | Send all emails from this address. If set empty, this feature is disabled.                        |               | `/etc/nullmailer/allmailfrom`                       |
+| nullmailer_admin_address   | The email of the system administrator.                                                            |               | `/etc/nullmailer/adminaddr`                         |
+| nullmailer_server_address  | The email server to be used to send emails.                                                       |               | `/etc/nullmailer/remotes`                           |
+| nullmailer_server_port     | The email server port to be used to send emails.                                                  | `465`         | `/etc/nullmailer/remotes`                           |
+| nullmailer_server_user     | The email user to be used to send emails.                                                         |               | `/etc/nullmailer/remotes`                           |
+| nullmailer_server_password | The email user password to be used to send emails.                                                |               | `/etc/nullmailer/remotes`                           |
 
 Example Playbook
 ----------------
