@@ -7,7 +7,6 @@
       - ssmtp
     state: absent
   become: true
-  become_user: root
 
 - name: Ensure nullmailer is installed
   ansible.builtin.package:
@@ -15,7 +14,6 @@
       - nullmailer
       - mailutils
   become: true
-  become_user: root
 
 - name: Deploy defaultdomain configuration
   ansible.builtin.template:
@@ -26,7 +24,6 @@
     mode: "0644"
   notify: Restart nullmailer
   become: true
-  become_user: root
 
 - name: Deploy allmailfrom configuration
   ansible.builtin.template:
@@ -38,7 +35,6 @@
   notify: Restart nullmailer
   when: nullmailer_allmail_from | length > 0
   become: true
-  become_user: root
 
 - name: Remove allmailfrom configuration
   ansible.builtin.file:
@@ -47,7 +43,6 @@
   notify: Restart nullmailer
   when: nullmailer_allmail_from | length == 0
   become: true
-  become_user: root
 
 - name: Deploy adminaddr configuration
   ansible.builtin.template:
@@ -58,7 +53,6 @@
     mode: "0644"
   notify: Restart nullmailer
   become: true
-  become_user: root
 
 - name: Deploy remotes configuration
   ansible.builtin.template:
@@ -69,7 +63,6 @@
     mode: "0640"
   notify: Restart nullmailer
   become: true
-  become_user: root
 
 - name: Configure mailname
   ansible.builtin.template:
@@ -80,4 +73,3 @@
     mode: "0644"
   notify: Restart nullmailer
   become: true
-  become_user: root
