@@ -8,10 +8,10 @@ jobs:
     name: ansible-lint
     steps:
       - name: Checkout repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v5
 
       - name: Install python for ansible
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
